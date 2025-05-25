@@ -6,12 +6,12 @@ const ChatList = () => {
   const { isPending, error, data } = useQuery({
     queryKey: ["userChats"],
     queryFn: () =>
-      fetch(`${import.meta.env.VITE_API_URL}/api/userchats`, {
-        credentials: "include",  // Mengirimkan cookie dengan request
-        headers: {
-          'Cache-Control': 'no-cache',  // Menonaktifkan cache
-        }
-      }).then((res) => res.json()),
+      fetch(`/api/userchats`, {
+  credentials: "include",
+  headers: {
+    'Cache-Control': 'no-cache',
+  }
+}).then((res) => res.json()),
   });
 
   return (

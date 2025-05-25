@@ -39,18 +39,18 @@ const NewPrompt = ({ data }) => {
 
   const mutation = useMutation({
     mutationFn: () => {
-      return fetch(`${import.meta.env.VITE_API_URL}/api/chats/${data._id}`, {
-        method: "PUT",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          question: question.length ? question : undefined,
-          answer,
-          img: img.dbData?.filePath || undefined,
-        }),
-      }).then((res) => res.json());
+      return return fetch(`/api/chats/${data._id}`, {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        question: question.length ? question : undefined,
+        answer,
+        img: img.dbData?.filePath || undefined,
+      }),
+    }).then((res) => res.json());
     },
     onSuccess: () => {
       queryClient

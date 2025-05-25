@@ -186,7 +186,7 @@ app.use((err, req, res, next) => {
 });
 
 app.get('*', (req, res) => {
-  res.redirect('https://alpha-dev-ai.vercel.app');
+  res.redirect('https://chat-alpha-ai.vercel.app');
 });
 
 

@@ -167,6 +167,18 @@ app.put("/api/chats/:id", requireAuth(), async (req, res) => {
   }
 });
 
+app.get('/set-cookie', (req, res) => {
+  res.cookie('sessionId', 'abc123', {
+    httpOnly: true,      // supaya gak bisa diakses JavaScript (lebih aman)
+    secure: true,        // wajib pakai HTTPS, cookie cuma dikirim lewat HTTPS
+    sameSite: 'none',    // supaya cookie bisa dikirim di cross-site request
+    maxAge: 24 * 60 * 60 * 1000, // masa berlaku cookie 1 hari
+    path: '/',           // cakupan cookie untuk semua path
+  });
+  res.send('Cookie sudah diset!');
+});
+
+
 // Menangani error
 app.use((err, req, res, next) => {
   console.error(err.stack);
